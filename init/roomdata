@@ -1,0 +1,62 @@
+const sampleRooms = [
+  {
+    title: "Chic Modern Bedroom",
+    description:
+      "Bright and airy modern bedroom with minimalist décor and elegant style.",
+    image: {
+      filename: "roomimage",
+      url: "https://source.unsplash.com/800x600/?modern-bedroom",
+    },
+    price: 1200,
+    location: "Bengaluru",
+    country: "India",
+  },
+  {
+    title: "Contemporary Guest Room",
+    description:
+      "Neutral-toned guest room featuring clean lines and cosy ambiance.",
+    image: {
+      filename: "roomimage",
+      url: "https://source.unsplash.com/800x600/?contemporary-bedroom",
+    },
+    price: 1000,
+    location: "Mumbai",
+    country: "India",
+  },
+  {
+    title: "Luxury Master Suite",
+    description:
+      "Spacious master suite with plush textures and refined lighting.",
+    image: {
+      filename: "roomimage",
+      url: "https://source.unsplash.com/800x600/?luxury-bedroom",
+    },
+    price: 2500,
+    location: "New Delhi",
+    country: "India",
+  },
+  {
+    title: "Scandinavian Style Room",
+    description:
+      "Cozy Scandinavian design with wooden accents and minimalist appeal.",
+    image: {
+      filename: "roomimage",
+      url: "https://source.unsplash.com/800x600/?scandinavian-bedroom",
+    },
+    price: 900,
+    location: "Chennai",
+    country: "India",
+  },
+  {
+    title: "Urban Loft Bedroom",
+    description: "Stylish urban loft with exposed elements and modern setup.",
+    image: {
+      filename: "roomimage",
+      url: "https://source.unsplash.com/800x600/?loft-bedroom",
+    },
+    price: 1500,
+    location: "Kolkata",
+    country: "India",
+  },
+];
+module.exports = sampleRooms;

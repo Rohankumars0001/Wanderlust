@@ -1,0 +1,93 @@
+<% layout("layouts/boilerplate") %>
+<div class="row">
+  <div class="col-8 offset-2">
+    <br /><br />
+    <h2>New Listing</h2>
+    <form class="needs-validation" novalidate method="post" action="/listings">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          name="listing[title]"
+          placeholder="Add a catchy Title"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">Perfect title!&#10003;</div>
+        <div class="invalid-feedback">Title can’t be empty&#9888;</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          name="listing[description]"
+          class="form-control"
+          required
+        ></textarea>
+        <div class="valid-feedback">Looks great!&#10003;</div>
+        <div class="invalid-feedback">Please add Description&#9888;</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">image</label>
+        <input
+          name="listing[image][url]"
+          placeholder="Enter image URL"
+          type="text"
+          class="form-control"
+        />
+        <div class="valid-feedback">
+          No image available — default image set automatically.&#10003;
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price</label>c
+          <input
+            name="listing[price]"
+            placeholder="1200"
+            type=""
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Looks good!&#10003;</div>
+          <div class="invalid-feedback">
+            Oops! That doesn’t look like a valid amount&#9888;
+          </div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <label for="country" class="form-label">Country</label>
+          <input
+            name="listing[country]"
+            placeholder="India"
+            type="text"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Valid country&#10003;</div>
+          <div class="invalid-feedback">
+            Country field cannot be empty&#9888;
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input
+          name="listing[location]"
+          placeholder="Banglore, Tumkur"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">Valid Location&#10003;</div>
+        <div class="invalid-feedback">location cannot be left Balnk&#9888;</div>
+      </div>
+
+      <button type="submit" class="btn btn-outline-danger">Add</button>
+      <br /><br />
+    </form>
+  </div>
+</div>

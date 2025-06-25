@@ -1,0 +1,104 @@
+<% layout("layouts/boilerplate") %>
+<div class="row">
+  <div class="col-8 offset-2">
+    <br /><br />
+    <h2>Edit your Listing</h2>
+
+    <% if (listing && listing._id) { %>
+    <form
+      action="/listings/<%= listing._id %>?_method=PUT"
+      method="POST"
+      class="needs-validation"
+      novalidate
+    >
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          name="listing[title]"
+          value="<%= listing.title %>"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">Perfect title!&#10003;</div>
+        <div class="invalid-feedback">Title can’t be empty&#9888;</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Description</label>
+        <textarea name="listing[description]" class="form-control" required>
+<%= listing.description %></textarea
+        >
+        <div class="valid-feedback">Looks great!&#10003;</div>
+        <div class="invalid-feedback">Please add Description&#9888;</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Image</label>
+        <input
+          name="listing[image][url]"
+          value="<%= listing.image?.url || '' %>"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">
+          No image available — default image set automatically. &#10003;
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="title" class="form-label">&#8377; Price</label>
+          <input
+            name="listing[price]"
+            value="<%= listing.price %>"
+            type="number"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Looks good!&#10003;</div>
+          <div class="invalid-feedback">
+            Oops! That doesn’t look like a valid amount&#9888;
+          </div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <label for="title" class="form-label">Country</label>
+          <input
+            name="listing[country]"
+            value="<%= listing.country %>"
+            type="text"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Valid country&#10003;</div>
+          <div class="invalid-feedback">
+            Country field cannot be empty&#9888;
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="title" class="form-label">Location</label>
+        <input
+          name="listing[location]"
+          value="<%= listing.location %>"
+          type="text"
+          class="form-control"
+          required
+        />
+        <div class="valid-feedback">Valid Location&#10003;</div>
+        <div class="invalid-feedback">location cannot be left Blank&#9888;</div>
+      </div>
+
+      <button type="submit" class="btn btn-outline-danger mt-3">Edit</button>
+      <br /><br />
+    </form>
+    <% } else { %>
+    <div class="alert alert-danger mt-4">
+      Listing not found or missing ID. Cannot edit.
+    </div>
+    <% } %>
+  </div>
+</div>

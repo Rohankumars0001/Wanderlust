@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/home"
+      ><i class="fa-regular fa-compass"></i
+    ></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" href="/home"
+          ><i class="fa-solid fa-house color"></i
+        ></a>
+        <a class="nav-link" href="/listings"
+          ><i class="fas fa-list color"></i>
+        </a>
+        <a class="nav-link" href="/listings/new"
+          ><i class="fas fa-plus color"></i>
+        </a>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <% if(!currUser) { %>
+        <a class="nav-link" href="/signup"
+          >Signup <i class="fa-solid fa-user-plus color"></i
+        ></a>
+        <a class="nav-link" href="/login"
+          >Login <i class="fa-solid fa-right-to-bracket color"></i
+        ></a>
+        <% }%> <% if(currUser) { %>
+        <a class="nav-link" href="/logout"
+          >Logout <i class="fa-solid fa-right-from-bracket color"></i>
+        </a>
+        <% }%>
+      </div>
+    </div>
+  </div>
+</nav>
