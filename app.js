@@ -17,6 +17,10 @@ const port = 8080;
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const roomsRouter = require("./routes/rooms.js");
+const housesRouter = require("./routes/house.js");
+
+
 
 //connecting with mongodb
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
@@ -72,6 +76,9 @@ app.use((req, res, next) => {
 app.use("/listings", listingRouter); //Listings
 app.use("/listings/:id/reviews", reviewRouter); //Reviews
 app.use("/", userRouter);
+app.use("/", roomsRouter);
+app.use("/", housesRouter);
+
 
 //////////////////////////
 app.get("/home", (req, res) => {
@@ -91,5 +98,3 @@ app.use((err, req, res, next) => {
 app.listen(port, () => {
   console.log(`Server running @ http://localhost:${port}/home`);
 });
-
-/*hiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii*/
