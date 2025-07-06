@@ -47,20 +47,16 @@ module.exports.validateListing = (req, res, next) => {
   }
 };
 
+module.exports.validateReview = (req, res, next) => {
+  if (!req.body || !req.body.review) {
+    throw new ExpressError(400, "Review data is missing.");
+  }
 
-module.exports.validateReview = (req,res,next)=>{
-  const validateReview = (req, res, next) => {
-    if (!req.body || !req.body.review) {
-      throw new ExpressError(400, "Review data is missing.");
-    }
-  
-    const { error } = reviewSchema.validate(req.body);
-    if (error) {
-      const errMsg = error.details.map((el) => el.message).join(",");
-      throw new ExpressError(400, errMsg);
-    } else {
-      next();
-    }
-  };
-  
-}
+  const { error } = reviewSchema.validate(req.body);
+  if (error) {
+    const errMsg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(400, errMsg);
+  } else {
+    next();
+  }
+};

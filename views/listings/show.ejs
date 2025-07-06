@@ -23,6 +23,9 @@
           <%= listing.location %>, <i><%= listing.country %></i>
         </p>
       </div>
+      <br>
+
+      <% if(currUser && listing.owner._id.equals(currUser._id) ) {%>
 
       <div class="btns text-center">
         <a href="/listings/<%= listing._id %>/edit">
@@ -37,12 +40,14 @@
           <button class="btn btn-outline-danger">Delete</button>
         </form>
       </div>
+      <% }%>
     </div>
   </div>
 
   <!-- Review Section -->
   <div class="col-12 d-flex justify-content-center mt-5">
     <div class="review-box w-100" style="max-width: 600px">
+      <%  if(currUser){ %>
       <h4 class="mb-3">Leave a Review</h4>
       <form
         action="/listings/<%= listing._id %>/reviews"
@@ -79,6 +84,7 @@
           <button class="btn btn-outline-danger px-4">Submit</button>
         </div>
       </form>
+      <% }%>
     </div>
   </div>
 
@@ -91,7 +97,7 @@
       <div class="col-lg-5 col-md-6 col-sm-10 mb-3">
         <div class="card h-100">
           <div class="card-body">
-            <h5 class="card-title">don ting so</h5>
+            <h5 class="card-title">@<%= review.author.username %></h5>
             <p class="card-text"><%= review.comment %></p>
             <p class="card-text"><%= review.rating %>★</p>
             <form
