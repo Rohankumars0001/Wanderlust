@@ -1,5 +1,6 @@
 const Listing = require("./models/listing.js");
-const { listingSchema } = require("./schema.js");
+const { listingSchema, reviewSchema } = require("./schema.js");
+const ExpressError = require("./utils/ExpressError.js");
 
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
@@ -29,7 +30,7 @@ module.exports.isOwner = async (req, res, next) => {
     !res.locals.currUser ||
     !listing.owner.equals(res.locals.currUser._id)
   ) {
-    req.flash("error", "You don't have permission to edit");
+    req.flash("error", "You are not the owner of this listing");
     return res.redirect(`/listings/${id}`);
   }
   next();
@@ -45,3 +46,21 @@ module.exports.validateListing = (req, res, next) => {
     next();
   }
 };
+
+
+module.exports.validateReview = (req,res,next)=>{
+  const validateReview = (req, res, next) => {
+    if (!req.body || !req.body.review) {
+      throw new ExpressError(400, "Review data is missing.");
+    }
+  
+    const { error } = reviewSchema.validate(req.body);
+    if (error) {
+      const errMsg = error.details.map((el) => el.message).join(",");
+      throw new ExpressError(400, errMsg);
+    } else {
+      next();
+    }
+  };
+  
+}
