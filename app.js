@@ -19,6 +19,7 @@ const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 const roomsRouter = require("./routes/rooms.js");
 const housesRouter = require("./routes/house.js");
+const flatsRouter = require("./routes/flats.js");
 
 
 
@@ -78,6 +79,8 @@ app.use("/listings/:id/reviews", reviewRouter); //Reviews
 app.use("/", userRouter);
 app.use("/", roomsRouter);
 app.use("/", housesRouter);
+app.use("/", flatsRouter);
+
 
 
 //////////////////////////
