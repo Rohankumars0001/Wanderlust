@@ -2,6 +2,8 @@ const Listing = require("./models/listing.js");
 const Review = require("./models/review.js");
 const { listingSchema, reviewSchema } = require("./schema.js");
 const ExpressError = require("./utils/ExpressError.js");
+const mongoose = require("mongoose");
+
 
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
@@ -80,5 +82,15 @@ module.exports.isReviewAuthor = async (req, res, next) => {
     return res.redirect(`/listings/${id}`);
   }
 
+  next();
+};
+
+
+// Validate MongoDB ObjectId
+module.exports.isValidId = (req, res, next) => {
+  const { id } = req.params;
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    throw new ExpressError(400, "Invalid listing ID format");
+  }
   next();
 };
