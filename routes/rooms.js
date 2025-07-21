@@ -27,7 +27,5 @@ router.get("/:id",  wrapAsync(roomsController.showRoom));
 // UPDATE - PUT /rooms/:id
 // router.put("/:id", isLoggedIn, isOwner, isValidId, validateListing, wrapAsync(roomsController.updateRoom));
 
-// DELETE - DELETE /rooms/:id
-// router.delete("/:id", isOwner, isLoggedIn, isValidId, wrapAsync(roomsController.deleteRoom));
 
 module.exports = router;
