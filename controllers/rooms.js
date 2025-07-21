@@ -28,3 +28,23 @@ module.exports.showRoom = async (req, res) => {
 };
 
 
+
+module.exports.renderNew =async (req, res, next) => {
+  try {
+    if (!req.user) {
+      req.flash("error", "You must be logged in to create a listing.");
+      return res.redirect("/login");
+    }
+
+    const newRoom = new Room(req.body.listing);
+    newRoom.owner = req.user._id;
+
+    await newRoom.save();
+    req.flash("success", "New Room Created!");
+    res.redirect("/Rooms");
+  } catch (err) {
+    next(err); // Pass to global error handler
+  }
+};
+
+

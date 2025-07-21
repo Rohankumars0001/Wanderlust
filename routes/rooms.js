@@ -16,7 +16,7 @@ router.get("/", wrapAsync(roomsController.showRooms));
 router.get("/:id",  wrapAsync(roomsController.showRoom));
 
 // NEW - GET /rooms/new
-// router.get("/new", isLoggedIn, roomsController.renderNew);
+router.get("/new", isLoggedIn, roomsController.renderNew);
 
 // CREATE - POST /rooms
 // router.post("/", isLoggedIn, validateListing, wrapAsync(roomsController.createRoom));
