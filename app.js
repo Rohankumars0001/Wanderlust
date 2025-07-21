@@ -79,10 +79,11 @@ app.get("/home", (req, res) => {
   res.render("listings/home");
 });
 
-// 404 handler
-app.all("*", (req, res, next) => {
-  next(new ExpressError(404, "Page Not Found"));
-});
+// // 404 handler
+// app.all((req, res, next) => {
+//   next(new ExpressError(404, "Page Not Found"));
+// });
+
 
 // Global error handler
 app.use((err, req, res, next) => {

@@ -4,49 +4,26 @@ const Room = require("../models/rooms"); // Ensure this model file exists
 // Show all rooms
 module.exports.showRooms = async (req, res) => {
   const rooms = await Room.find({});
-  res.render("category/Rooms/roomslistings", { rooms });
+  res.render("category/Rooms/roomslisting", { rooms }); // Use your correct EJS path
 };
 
-// // Render form to create a new room
-// module.exports.renderNew = (req, res) => {
-//   res.render("category/newRoom");
-// };
-
-// // Create a new room
-// module.exports.createRoom = async (req, res) => {
-//   const newRoom = new Room(req.body.room);
-//   newRoom.owner = req.user._id;
-//   await newRoom.save();
-//   req.flash("success", "New Room Created!");
-//   res.redirect("/rooms");
-// };
-
 // Show details of one room
-// module.exports.showRoom = any;
+module.exports.showRoom = async (req, res) => {
+  const { id } = req.params;
 
-// // Render edit form
-// module.exports.renderEditForm = async (req, res) => {
-//   const { id } = req.params;
-//   const room = await Room.findById(id);
-//   if (!room) {
-//     req.flash("error", "Room not found!");
-//     return res.redirect("/rooms");
-//   }
-//   res.render("category/editRoom", { room });
-// };
+  const room = await Room.findById(id)
+    .populate({
+      path: "reviews",
+      populate: { path: "author" },
+    })
+    .populate("owner");
 
-// // Update room
-// module.exports.updateRoom = async (req, res) => {
-//   const { id } = req.params;
-//   await Room.findByIdAndUpdate(id, { ...req.body.room });
-//   req.flash("success", "Room updated!");
-//   res.redirect(`/rooms/${id}`);
-// };
+  if (!room) {
+    req.flash("error", "The room you have requested does not exist!");
+    return res.redirect("/rooms");
+  }
 
-// // Delete room
-// module.exports.deleteRoom = async (req, res) => {
-//   const { id } = req.params;
-//   await Room.findByIdAndDelete(id);
-//   req.flash("success", "Room deleted!");
-//   res.redirect("/rooms");
-// };
+  res.render("category/Rooms/showRoom", { room }); // Match your actual view path
+};
+
+
