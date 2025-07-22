@@ -1,3 +1,11 @@
+html {
+  scroll-behavior: smooth;
+}
+/* html, body {
+  height: 100%;
+  overflow: hidden;
+} */
+
 body {
   font-family: "Plus Jakarta Sans", sans-serif !important;
   display: flex;

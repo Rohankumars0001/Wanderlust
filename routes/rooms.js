@@ -13,7 +13,7 @@ const Room = require("../models/rooms.js"); // ✅ Needed for findById
 router.get("/", wrapAsync(roomsController.showRooms));
 
 // SHOW - GET /rooms/:id
-router.get("/:id",  wrapAsync(roomsController.showRoom));
+router.get("/:id", isValidId, wrapAsync(roomsController.showRoom));
 
 // NEW - GET /rooms/new
 router.get("/new", isLoggedIn, roomsController.renderNew);

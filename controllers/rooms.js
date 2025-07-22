@@ -1,35 +1,42 @@
-const { any } = require("joi");
-const Room = require("../models/rooms"); // Ensure this model file exists
-
+const Room = require("../models/rooms");
 
 // Show all rooms
 module.exports.showRooms = async (req, res) => {
-  const rooms = await Room.find({});
-  res.render("category/Rooms/roomslisting", { rooms }); // Use your correct EJS path
-};
-
-// Show details of one room
-module.exports.showRoom = async (req, res) => {
-  const { id } = req.params;
-
-  const room = await Room.findById(id)
-    .populate({
-      path: "reviews",
-      populate: { path: "author" },
-    })
-    .populate("owner");
-
-  if (!room) {
-    req.flash("error", "The room you have requested does not exist!");
-    return res.redirect("/rooms");
+  try {
+    const rooms = await Room.find({});
+    res.render("category/Rooms/roomslisting", { rooms });
+  } catch (err) {
+    req.flash("error", "Unable to load rooms.");
+    res.redirect("/");
   }
-
-  res.render("category/Rooms/showRoom", { room }); // Match your actual view path
 };
 
+// Show details of a single room
+module.exports.showRoom = async (req, res) => {
+  try {
+    const { id } = req.params;
 
+    const room = await Room.findById(id)
+      .populate({
+        path: "reviews",
+        populate: { path: "author" },
+      })
+      .populate("owner");
 
-module.exports.renderNew =async (req, res, next) => {
+    if (!room) {
+      req.flash("error", "The room you requested does not exist!");
+      return res.redirect("/rooms");
+    }
+
+    res.render("category/Rooms/showRoom", { room });
+  } catch (err) {
+    req.flash("error", "Error loading room details.");
+    res.redirect("/rooms");
+  }
+};
+
+// Render new room form and create room
+module.exports.renderNew = async (req, res, next) => {
   try {
     if (!req.user) {
       req.flash("error", "You must be logged in to create a listing.");
@@ -40,11 +47,9 @@ module.exports.renderNew =async (req, res, next) => {
     newRoom.owner = req.user._id;
 
     await newRoom.save();
-    req.flash("success", "New Room Created!");
-    res.redirect("/Rooms");
+    req.flash("success", "New room created!");
+    res.redirect("/rooms");
   } catch (err) {
-    next(err); // Pass to global error handler
+    next(err);
   }
 };
-
-

@@ -1,0 +1,117 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="row mt-3 mb-3 justify-content-center">
+  <div class="col-10 text-center">
+    <h2><b><%= flat.title %></b></h2>
+  </div>
+
+  <!-- Listing Card -->
+  <div class="card listing-c" style="width: 40rem">
+    <div class="text-center">
+      <img
+        src="<%= flat.image.url %>"
+        class="card-img-top show-img"
+        alt="listing_image"
+      />
+    </div>
+    <div class="card-body">
+      <div class="card-text text-center">
+        <p>Owned By: <i><%= flat.owner.username %></i></p>
+        <p>
+          <%= flat.description %><br />
+          &#8377;<%= flat.price.toLocaleString("en-IN") %><br />
+          <%= flat.location %>, <i><%= flat.country %></i>
+        </p>
+      </div>
+      <br>
+
+      <% if(currUser && flat.owner._id.equals(currUser._id) ) {%>
+
+      <div class="btns text-center">
+        <a href="/flats/<%= flat._id %>/edit">
+          <button class="btn btn-outline-danger">Edit</button>
+        </a>
+        &nbsp;
+        <form
+          method="POST"
+          action="/flats/<%= flat._id %>?_method=DELETE"
+          class="d-inline"
+        >
+          <button class="btn btn-outline-danger">Delete</button>
+        </form>
+      </div>
+      <% }%>
+    </div>
+  </div>
+
+  <!-- Review Section -->
+  <div class="col-12 d-flex justify-content-center mt-5">
+    <div class="review-box w-100" style="max-width: 600px">
+      <%  if(currUser){ %>
+      <h4 class="mb-3">Leave a Review</h4>
+      <form
+        action="/flats/<%= flats._id %>/reviews"
+        method="post"
+        novalidate
+        class="needs-validation"
+      >
+        <div class="mb-3">
+          <label for="rating" class="form-label">Rating</label>
+          <input
+            type="range"
+            min="1"
+            max="5"
+            id="rating"
+            name="review[rating]"
+            class="form-range"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="comment" class="form-label">Comment</label>
+          <textarea
+            name="review[comment]"
+            id="comment"
+            rows="4"
+            class="form-control"
+            required
+          ></textarea>
+          <div class="valid-feedback">&#10003;</div>
+          <div class="invalid-feedback">Field cannot be empty &#9888;</div>
+        </div>
+
+        <div class="text-center">
+          <button class="btn btn-outline-danger px-4">Submit</button>
+        </div>
+      </form>
+      <% }%>
+    </div>
+  </div>
+
+  <!-- Reviews List -->
+  <div class="col-12 mt-4">
+    <hr />
+    <p class="text-center">All Reviews</p>
+    <div class="row justify-content-center">
+      <% for (let review of flat.reviews) { %>
+      <div class="col-lg-5 col-md-6 col-sm-10 mb-3">
+        <div class="card h-100">
+          <div class="card-body">
+            <h5 class="card-title">@<%= review.author.username %></h5>
+            <p class="card-text"><%= review.comment %></p>
+            <p class="card-text"><%= review.rating %>★</p>
+            <form
+              action="/listings/<%= flat._id %>/reviews/<%= review._id %>?_method=DELETE"
+              method="post"
+            >
+              <button class="btn btn-sm btn-outline">
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>

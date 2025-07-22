@@ -72,7 +72,7 @@ app.use("/listings/:id/reviews", reviewRouter); // Nested route
 app.use("/", userRouter);
 app.use("/rooms", roomsRouter);
 app.use("/", housesRouter);
-app.use("/", flatsRouter);
+app.use("/flats", flatsRouter);
 
 // Home route
 app.get("/home", (req, res) => {
