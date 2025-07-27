@@ -47,6 +47,12 @@
       [data-scroll-container] {
         overflow: hidden;
       }
+
+      /* Navbar hide effect */
+      .hide-navbar {
+        transform: translateY(-100%);
+        transition: transform 0.3s ease-in-out;
+      }
     </style>
   </head>
 
@@ -69,10 +75,26 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        const scrollContainer = document.querySelector("[data-scroll-container]");
+        const navbar = document.querySelector(".navbar");
+        let lastScrollTop = 0;
+
         const scroll = new LocomotiveScroll({
-          el: document.querySelector("[data-scroll-container]"),
+          el: scrollContainer,
           smooth: true,
           lerp: 0.05,
+        });
+
+        scroll.on("scroll", (obj) => {
+          const currentScroll = obj.scroll.y;
+
+          if (currentScroll > lastScrollTop) {
+            navbar.classList.add("hide-navbar");
+          } else {
+            navbar.classList.remove("hide-navbar");
+          }
+
+          lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
         });
       });
     </script>
