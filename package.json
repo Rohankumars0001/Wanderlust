@@ -29,6 +29,7 @@
     "path-to-regexp": "^8.2.0"
   },
   "devDependencies": {
-    "prettier": "^3.6.1"
+    "prettier": "^3.6.1",
+    "purgecss": "^7.0.2"
   }
 }
