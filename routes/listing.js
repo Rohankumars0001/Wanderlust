@@ -5,30 +5,47 @@ const { isLoggedIn, isOwner, validateListing, isValidId } = require("../middlewa
 const listingController = require("../controllers/listings.js")
 
 
-
+// CREATE - POST /listings
 // INDEX - GET /listings
-router.get(
-  "/",
-  wrapAsync(listingController.index)
-);
+
+router
+  .route("/")
+    .get(
+      wrapAsync(listingController.index)
+    )
+    .post(
+    isLoggedIn,
+    validateListing,
+    wrapAsync(listingController.createListing)
+  );
 
 // NEW - GET /listings/new
 router.get("/new", isLoggedIn, listingController.renderNew
 );
 
 // SHOW - GET /listings/:id
-router.get(
-  "/:id",
-  isValidId,
-  wrapAsync(listingController.showListing)
-);
-// CREATE - POST /listings
-router.post(
-  "/",
-  isLoggedIn,
-  validateListing,
-  wrapAsync(listingController.createListing)
-);
+// UPDATE - PUT /listings/:id
+// DELETE - DELETE /listings/:id
+router
+     .route("/:id")
+     .get(
+        isValidId,
+        wrapAsync(listingController.showListing)
+      )
+      .put(
+        isLoggedIn,
+        isOwner,
+        isValidId,
+        validateListing,
+        wrapAsync(listingController.updateListing)
+      )
+      .delete(
+        isOwner,
+        isLoggedIn,
+        isValidId,
+        wrapAsync(listingController.destroyListing)
+      );
+
 
 // EDIT - GET /listings/:id/edit
 router.get(
@@ -38,26 +55,6 @@ router.get(
   isValidId,
   wrapAsync(listingController.renderEditForm)
 );
-
-// UPDATE - PUT /listings/:id
-router.put(
-  "/:id",
-  isLoggedIn,
-  isOwner,
-  isValidId,
-  validateListing,
-  wrapAsync(listingController.updateListing)
-);
-
-// DELETE - DELETE /listings/:id
-router.delete(
-  "/:id",
-  isOwner,
-  isLoggedIn,
-  isValidId,
-  wrapAsync(listingController.destroyListing)
-);
-
 
 
 module.exports = router;

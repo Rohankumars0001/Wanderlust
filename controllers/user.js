@@ -1,5 +1,11 @@
 const User = require("../models/user.js");
-const passport = require("passport");
+
+module.exports.renderLoginForm =    (req, res) => { res.render("users/login.ejs")
+
+};
+module.exports.renderSignupForm = (req, res) => {
+  res.render("users/signup.ejs");
+};
 
 module.exports.userSignup = async (req, res) => {
     try {
@@ -21,10 +27,6 @@ module.exports.userSignup = async (req, res) => {
 
 
 module.exports.userLogin =  module.exports.userLogin = [
-  passport.authenticate("local", {
-    failureRedirect: "/login",
-    failureFlash: true,
-  }),
   async (req, res) => {
     req.flash("success", "Welcome Back to wanderlust you are logged in");
     const redirectUrl = res.locals.redirectUrl || "/listings";
