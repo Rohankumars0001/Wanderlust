@@ -1,30 +1,31 @@
 <% layout("layouts/boilerplate") %>
-<h3>Rooms</h3>
-<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-  <% for(let room of rooms){ %>
-  <a href="/rooms/<%= room._id %>" class="listing-link">
-    <div class="card col listing-card-3d listing-c">
-      <img
-        src="<%= room.image.url %>"
-        class="card-img-top"
-        alt="room_image"
-        style="height: 20rem"
-        
-      />
-      <div class="card-img-overlay"></div>
-      <div class="card-title">
-        <p class="card-title">
-          <b>&nbsp;&nbsp;<%= room.title %></b> <br />
-          <% if (room.price != null) { %>
-            &nbsp;&nbsp;&#8377;<%= room.price.toLocaleString("en-IN") %>/night <br />
-          <% } else { %>
-            Price not available <br />
-          <% } %>
-          <br />
-          &nbsp;&nbsp;<%= room.description %> <br />
-        </p>
+<h3 class="text-center my-4">Rooms</h3>
+
+<div class="container mb-5">
+  <div class="row justify-content-center g-4">
+    <% for(let room of rooms){ %>
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <a href="/rooms/<%= room._id %>" class="listing-link" style="text-decoration: none;">
+          <div class="card listing-card-3d listing-c shadow-sm border-0">
+            <img
+              src="<%= room.image.url %>"
+              class="card-img-top"
+              alt="room_image"
+              style="height: 14rem; object-fit: cover;"
+              loading="lazy"
+            />
+            <div class="card-body">
+              <h5 class="card-title mb-1"><%= room.title %></h5>
+              <% if (room.price != null) { %>
+                <p class="mb-1 text-muted">&#8377; <%= room.price.toLocaleString("en-IN") %>/night</p>
+              <% } else { %>
+                <p class="mb-1 text-muted">Price not available</p>
+              <% } %>
+              <p class="card-text small text-secondary"><%= room.description %></p>
+            </div>
+          </div>
+        </a>
       </div>
-    </div>
-  </a>
-  <% } %>
+    <% } %>
+  </div>
 </div>

@@ -31,6 +31,14 @@ const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 mongoose.connect(MONGO_URL)
   .then(() => console.log("✅ Connected to MongoDB"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
+// Add this before routes
+app.use((req, res, next) => {
+  res.setTimeout(120000, () => { // 2 minutes
+    console.log('Request timed out');
+    res.status(408).send('Request timeout');
+  });
+  next();
+});
 
 // Session configuration
 const sessionOptions = {

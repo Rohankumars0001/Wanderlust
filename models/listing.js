@@ -11,21 +11,8 @@ const listingSchema = new Schema({
     type: String,
   },
   image: {
-    filename: {
-      type: String,
-      default: "listingimage",
-    },
-    url: {
-      type: String,
-      default:
-        "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?q=80&w=1015&auto=format&fit=crop",
-      set: function (v) {
-        if (!v || v.trim() === "") {
-          return this.default;
-        }
-        return v;
-      },
-    },
+   url: String,
+   filename: String,
   },
   price: {
     type: Number,

@@ -1,5 +1,7 @@
 html {
   scroll-behavior: smooth;
+    height: 100%;
+
 }
 /* html, body {
   height: 100%;
@@ -7,11 +9,18 @@ html {
 } */
 
 body {
+  display: flex;
+  flex-direction: column;
   font-family: "Plus Jakarta Sans", sans-serif !important;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
+
+main {
+  flex: 1;
+}
+
 
 [data-scroll-container] {
   overflow: hidden;
