@@ -196,3 +196,7 @@
   transition: background-position .7s;
 }
 
+.starability-result:after,
+.starability-slot > label {
+  filter: hue-rotate(300deg);
+}
