@@ -4,15 +4,14 @@
 <div class="container mb-5">
   <div class="row justify-content-center g-4">
     <% for(let room of rooms){ %>
-      <div class="col-lg-4 col-md-6 col-sm-10">
+      <div class="col-lg-4 col-md-6 col-sm-10 lazy-card">
         <a href="/rooms/<%= room._id %>" class="listing-link" style="text-decoration: none;">
           <div class="card listing-card-3d listing-c shadow-sm border-0">
             <img
-              src="<%= room.image.url %>"
-              class="card-img-top"
+              data-src="<%= room.image.url.replace('/upload/', '/upload/w_800,q_auto,f_auto/') %>"
+              class="card-img-top lazy-img"
               alt="room_image"
               style="height: 14rem; object-fit: cover;"
-              loading="lazy"
             />
             <div class="card-body">
               <h5 class="card-title mb-1"><%= room.title %></h5>

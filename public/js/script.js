@@ -43,3 +43,26 @@ document.addEventListener("DOMContentLoaded", function () {
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   });
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const lazyCards = document.querySelectorAll(".lazy-card");
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target.querySelector(".lazy-img");
+        if (img && img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute("data-src");
+        }
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    rootMargin: "100px",
+    threshold: 0.1
+  });
+
+  lazyCards.forEach(card => observer.observe(card));
+});
