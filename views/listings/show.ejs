@@ -1,7 +1,12 @@
 <% layout("layouts/boilerplate") %>
-
+<script>
+  const mapToken = "<%=  process.env.MAP_TOKEN  %>";
+  const listing = <%- JSON.stringify(listing) %>;
+</script>
 <!-- MapLibre CSS -->
 <link href="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.css" rel="stylesheet" />
+<!-- MapLibre JS (added so the map actually renders) -->
+<script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
 
 <div class="row mt-3 mb-3 justify-content-center">
   <div class="col-10 text-center">
@@ -98,9 +103,9 @@
   <!-- Reviews List -->
   <div class="col-12 mt-4">
     <hr />
-    <p class="text-center">All Reviews</p>
     <div class="row justify-content-center">
       <% for (let review of listing.reviews) { %>
+        <p class="text-center">All Reviews</p>
         <div class="col-lg-5 col-md-6 col-sm-10 mb-3">
           <div class="card h-100">
             <div class="card-body">
@@ -126,30 +131,8 @@
   <div class="col-12 mt-5 text-center">
     <h4 class="text-center">Where you'll be</h4>
     <div style="display: flex; justify-content: center;">
-      <div id="map" style="width: 500px; height: 500px; border-radius: 8px; overflow: hidden;"></div>
+      <div id="map" style="width: 700px; height: 500px; border-radius: 8px; overflow: hidden;"></div>
     </div>
   </div>
 </div>
-
-<!-- MapLibre JS -->
-<script src="https://unpkg.com/maplibre-gl@3.6.2/dist/maplibre-gl.js"></script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const apiKey = "LsiFTSyiCUmwqDSqyXx2"; // Replace with your MapTiler API key
-
-    const map = new maplibregl.Map({
-      container: "map",
-      style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${apiKey}`,
-      center: [90, 25], // Asia center
-      zoom: 3.5
-    });
-
-    map.addControl(new maplibregl.NavigationControl(), "top-right");
-
-    map.on('load', () => {
-      map.setCenter([90, 25]);
-      map.setZoom(3.5);
-    });
-  });
-</script>
+<script src="/js/map.js"></script>
