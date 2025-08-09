@@ -17,24 +17,27 @@
           <i class="fa-solid fa-house"></i>
         </a>
         <a class="nav-link" href="/listings">
-          <i class="fas fa-list"></i>
+          <span class="material-symbols-outlined">
+            travel_explore
+            </span>
         </a>
-        <a class="nav-link" href="/listings/new">
-          <i class="fas fa-plus"></i>
-        </a>
+        
       </div>
       <div class="navbar-nav ms-auto nav-links">
+        <a class="nav-link" href="/listings/new">
+         Airbnb your home <i class="fas fa-plus"></i>
+        </a>
         <% if(!currUser) { %>
         <a class="nav-link" href="/signup">
-          Signup <i class="fa-solid fa-user-plus"></i>
+         <b> Signup <i class="fa-solid fa-user-plus"></i></b>
         </a>
         <a class="nav-link" href="/login">
-          Login <i class="fa-solid fa-right-to-bracket"></i>
-        </a>
+         <b> Login <i class="fa-solid fa-right-to-bracket"></i>
+        </a></b>
         <% }%>
         <% if(currUser) { %>
         <a class="nav-link" href="/logout">
-          Logout <i class="fa-solid fa-right-from-bracket"></i>
+          <b>Logout <i class="fa-solid fa-right-from-bracket"></i></b>
         </a>
         <% }%>
       </div>

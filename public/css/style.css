@@ -330,3 +330,7 @@ i {
     text-shadow: 0 0 2px #000; /* adds contrast */
   }
 
+
+  .material-symbols-outlined {
+  color: #e04848; /* your desired color */
+}
