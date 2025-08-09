@@ -25,7 +25,7 @@ const roomsRouter = require("./routes/rooms.js");
 const housesRouter = require("./routes/house.js");
 const flatsRouter = require("./routes/flats.js");
 
-const port = 8080;
+const port = process.env.PORT;
 const MONGO_URL = process.env.ATLASDB_URL;
 
 // MongoDB connection (simplified)
@@ -108,5 +108,5 @@ app.use((err, req, res, next) => {
 
 // Start server
 app.listen(port, () => {
-  console.log(`🚀 Server running at http://localhost:${port}/home`);
+  console.log(`🚀 Server running at ${port}`);
 });
