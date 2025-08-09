@@ -5,7 +5,7 @@ const sampleRooms = [
       "Bright and airy modern bedroom with minimalist décor and elegant style.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg",
+      url: "https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1200,
     location: "Bengaluru",
@@ -17,7 +17,7 @@ const sampleRooms = [
       "Neutral-toned guest room featuring clean lines and cosy ambiance.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg",
+      url: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1000,
     location: "Mumbai",
@@ -29,7 +29,7 @@ const sampleRooms = [
       "Spacious master suite with plush textures and refined lighting.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg",
+      url: "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 2500,
     location: "New Delhi",
@@ -41,7 +41,7 @@ const sampleRooms = [
       "Cozy Scandinavian design with wooden accents and minimalist appeal.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/1571458/pexels-photo-1571458.jpeg",
+      url: "https://images.pexels.com/photos/1571458/pexels-photo-1571458.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 900,
     location: "Chennai",
@@ -52,7 +52,7 @@ const sampleRooms = [
     description: "Stylish urban loft with exposed elements and modern setup.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg",
+      url: "https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1500,
     location: "Kolkata",
@@ -63,7 +63,7 @@ const sampleRooms = [
     description: "A rustic bedroom with warm tones and wooden finishes.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg",
+      url: "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 800,
     location: "Manali",
@@ -74,7 +74,7 @@ const sampleRooms = [
     description: "Soft blue walls paired with white linen for a calming effect.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/1457848/pexels-photo-1457848.jpeg",
+      url: "https://images.pexels.com/photos/1457848/pexels-photo-1457848.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1300,
     location: "Pune",
@@ -85,7 +85,7 @@ const sampleRooms = [
     description: "Sleek design with minimal furniture and maximum space.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg",
+      url: "https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1100,
     location: "Ahmedabad",
@@ -96,7 +96,7 @@ const sampleRooms = [
     description: "Vintage elements meet comfort in this cozy setup.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/1571456/pexels-photo-1571456.jpeg",
+      url: "https://images.pexels.com/photos/1571456/pexels-photo-1571456.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1000,
     location: "Hyderabad",
@@ -107,7 +107,7 @@ const sampleRooms = [
     description: "Luxurious penthouse suite with city view and sleek design.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg",
+      url: "https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 2800,
     location: "Gurgaon",
@@ -118,7 +118,7 @@ const sampleRooms = [
     description: "Bright room with coastal decor near the beach.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/210265/pexels-photo-210265.jpeg",
+      url: "https://images.pexels.com/photos/210265/pexels-photo-210265.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1700,
     location: "Goa",
@@ -129,7 +129,7 @@ const sampleRooms = [
     description: "Relaxing bedroom with panoramic mountain views.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg",
+      url: "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1900,
     location: "Shimla",
@@ -140,7 +140,7 @@ const sampleRooms = [
     description: "Beige, white and taupe create a peaceful ambiance.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/1571457/pexels-photo-1571457.jpeg",
+      url: "https://images.pexels.com/photos/1571457/pexels-photo-1571457.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 950,
     location: "Indore",
@@ -151,7 +151,7 @@ const sampleRooms = [
     description: "Bohemian textiles and cozy lighting for free spirits.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/1457847/pexels-photo-1457847.jpeg",
+      url: "https://images.pexels.com/photos/1457847/pexels-photo-1457847.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1150,
     location: "Jaipur",
@@ -162,7 +162,7 @@ const sampleRooms = [
     description: "Efficient space with stylish and smart interiors.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg",
+      url: "https://images.pexels.com/photos/271743/pexels-photo-271743.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 850,
     location: "Surat",
@@ -173,7 +173,7 @@ const sampleRooms = [
     description: "Bright room with floral wallpaper and soft furnishings.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/1571461/pexels-photo-1571461.jpeg",
+      url: "https://images.pexels.com/photos/1571461/pexels-photo-1571461.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1050,
     location: "Nagpur",
@@ -184,7 +184,7 @@ const sampleRooms = [
     description: "Colorful room designed especially for children.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg",
+      url: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 950,
     location: "Lucknow",
@@ -195,7 +195,7 @@ const sampleRooms = [
     description: "Comfortable twin beds perfect for sharing.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg",
+      url: "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1200,
     location: "Chandigarh",
@@ -206,7 +206,7 @@ const sampleRooms = [
     description: "Raw and edgy design inspired by industrial lofts.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/210265/pexels-photo-210265.jpeg",
+      url: "https://images.pexels.com/photos/210265/pexels-photo-210265.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1400,
     location: "Noida",
@@ -217,7 +217,7 @@ const sampleRooms = [
     description: "Soft pastel colors and cozy decor.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/1457849/pexels-photo-1457849.jpeg",
+      url: "https://images.pexels.com/photos/1457849/pexels-photo-1457849.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 980,
     location: "Mysore",
@@ -228,7 +228,7 @@ const sampleRooms = [
     description: "Traditional Indian patterns and carved wooden furniture.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/1457846/pexels-photo-1457846.jpeg",
+      url: "https://images.pexels.com/photos/1457846/pexels-photo-1457846.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1000,
     location: "Varanasi",
@@ -239,7 +239,7 @@ const sampleRooms = [
     description: "Modern hotel room with elegant design.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg",
+      url: "https://images.pexels.com/photos/271639/pexels-photo-271639.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 2200,
     location: "Bhopal",
@@ -250,24 +250,23 @@ const sampleRooms = [
     description: "Full wood finish brings warmth and elegance.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg",
+      url: "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1500,
     location: "Raipur",
     country: "India",
   },
-   {
+  {
     title: "White Themed Room",
     description: "Bright, clean, all-white theme for a serene vibe.",
     image: {
       filename: "roomimage",
-      url: "https://images.pexels.com/photos/1457848/pexels-photo-1457848.jpeg",
+      url: "https://images.pexels.com/photos/1457848/pexels-photo-1457848.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&q=30",
     },
     price: 1250,
     location: "Coimbatore",
     country: "India",
   },
-  
 ];
 
 module.exports = sampleRooms;

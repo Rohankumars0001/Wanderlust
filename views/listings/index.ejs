@@ -1,64 +1,101 @@
 <% layout("layouts/boilerplate") %>
-<!-- <h3 class="text-center my-4">Listings</h3> -->
+
 <style>
+  /* Filters container */
   #filters {
+    font-size: 0.1rem;
     margin-top: 1rem;
-  display: flex;
-  justify-content: center;  /* center the whole bar */
-  align-items: center;
-  flex-wrap: nowrap;
-  padding: 0.5rem 2rem;
-  border-bottom: 1px solid #ddd;
-  gap: 2rem; /* even spacing between each filter */
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    overflow-x: auto;
+    padding: 0.5rem 2rem;
+    position: relative;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* hide scrollbar Firefox */
+  }
+  #filters::-webkit-scrollbar {
+    display: none; /* hide scrollbar Chrome */
+  }
 
-.filter {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 0.8rem;
-  opacity: 0.6;
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
+  /* Fade edges */
+  #filters::before,
+  #filters::after {
+    content: "";
+    position: sticky;
+    top: 0;
+    width: 60px;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+  #filters::before {
+    left: 0;
+    background: linear-gradient(to right, white, transparent);
+  }
+  #filters::after {
+    right: 0;
+    background: linear-gradient(to left, white, transparent);
+  }
 
-.filter span.material-symbols-outlined {
-  font-size: 28px;
-  color: #222; /* icon color */
-  margin-bottom: 0.3rem;
-}
+  /* Filter item */
+  .filter {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    text-align: center;
+  }
+  .filter div i {
+    font-size: 22px; /* Reduced icon size */
+    color: #222;
+    margin-bottom: 0.3rem;
+  }
+  .filter:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 
-.filter:hover {
-  opacity: 1;
-  transform: scale(1.05);
-  cursor: pointer;
-}
+  /* Toggles container */
+  .toggles-wrapper {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    margin-right: 2rem; /* Added margin on right */
+    justify-content: flex-end; /* Align to right */
+  }
 
-.tax-info {
-  font-size: 0.8rem;
-  display: none;
-}
+  /* Toggle styles */
+  .toggle-btn {
+    border: 1px solid #ccc;
+    border-radius: 1.5rem;
+    padding: 0.4rem 1rem;
+    display: flex;
+    align-items: center;
+    background: white;
+    gap: 0.5rem;
+    max-width: fit-content;
+  }
+  .toggle-btn:hover {
+    border-color: #999;
+  }
 
-.tax-toggle {
-  margin-bottom: 1.2rem;
-  border: 1px solid #ccc;
-  border-radius: 1.5rem;
-  padding: 0.4rem 1rem;
-  margin-left: 1.5rem;
-  display: flex;
-  align-items: center;
-  background: white;
-  gap: 0.5rem;
-}
-
-.tax-toggle:hover {
-  border-color: #999;
-}
-
+  .tax-info {
+    font-size: 0.8rem;
+    display: none;
+  }
+  .color{
+    color:#222;
+    opacity: 0.7;
+  }
 </style>
 
-
+<!-- Filters Row -->
 <div id="filters">
   <div class="filter">
     <div><i class="fa-solid fa-fire"></i></div>
@@ -76,13 +113,13 @@
     <div><i class="fa-solid fa-mountain"></i></div>
     <p>Mountains</p>
   </div>
-   <div class="filter">
+  <div class="filter">
     <div><i class="fa-brands fa-fort-awesome"></i></div>
     <p>Castles</p>
   </div>
   <div class="filter">
-    <div><i class="fa-solid fa-person-swimming"></i></i></div>
-    <p>Amazing pools</p>
+    <div><i class="fa-solid fa-person-swimming"></i></div>
+    <p>Amazing Pools</p>
   </div>
   <div class="filter">
     <div><i class="fa-solid fa-campground"></i></div>
@@ -93,7 +130,7 @@
     <p>Farms</p>
   </div>
   <div class="filter">
-    <div><i class="fa-solid fa-snowflake"></i></i></div>
+    <div><i class="fa-solid fa-snowflake"></i></div>
     <p>Arctic</p>
   </div>
   <div class="filter">
@@ -104,53 +141,74 @@
     <div><i class="fa-solid fa-sailboat"></i></div>
     <p>Boats</p>
   </div>
-  <div class="tax-toggle">
+</div>
+
+<!-- Toggles Row -->
+<div class="toggles-wrapper">
+  <!-- Tax toggle -->
+  <div class="toggle-btn">
     <div class="form-check-reverse form-switch">
-        <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-        <label class="form-check-label" for="switchCheckDefault">Display Total after Taxes</label>
+      <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
+      <label class="form-check-label" for="switchCheckDefault">Display Total after Taxes</label>
     </div>
   </div>
-  
+
+  <!-- New toggle -->
+  <div class="toggle-btn">
+    <div class="form-check-reverse form-switch"><i class="fa-solid fa-filter color"></i>
+      <label class="form-check-label" for="switchCheckExtra">Filters</label>
+    </div>
+  </div>
 </div>
+
+<!-- Listings -->
 <div class="container mb-5 mt-3">
   <div class="row justify-content-center g-4">
     <% for(let listing of alllistings){ %>
-    <div class="col-lg-4 col-md-6 col-sm-10">
-      <a href="/listings/<%= listing.id %>" class="listing-link" style="text-decoration: none;">
-        <div class="card listing-card-3d listing-c shadow-sm border-0">
-          <img
-            src="<%= listing.image.url %>"
-            class="card-img-top"
-            alt="listings_image"
-            style="height: 14rem; object-fit: cover;"
-            loading="lazy"
-          />
-          <div class="card-body">
-            <h5 class="card-title mb-1"><%= listing.title %></h5>
-            <% if (listing.price != null) { %>
-              <p class="mb-1 text-muted">&#8377; <%= listing.price.toLocaleString("en-IN") %>/night  <i class="tax-info">&nbsp;+18% GST</i></p>
-             
-              
-            <% } else { %>
-              <p class="mb-1 text-muted">Price not available</p>
-            <% } %>
-            <p class="card-text small text-secondary"><%= listing.description %></p>
+      <div class="col-lg-4 col-md-6 col-sm-10">
+        <a href="/listings/<%= listing.id %>" class="listing-link" style="text-decoration: none;">
+          <div class="card listing-card-3d listing-c shadow-sm border-0">
+            <img
+              src="<%= listing.image.url %>"
+              class="card-img-top"
+              alt="listings_image"
+              style="height: 14rem; object-fit: cover;"
+              loading="lazy"
+            />
+            <div class="card-body">
+              <h5 class="card-title mb-1"><%= listing.title %></h5>
+              <% if (listing.price != null) { %>
+                <p class="mb-1 text-muted">&#8377; <%= listing.price.toLocaleString("en-IN") %>/night  
+                  <i class="tax-info">&nbsp;+18% GST</i>
+                </p>
+              <% } else { %>
+                <p class="mb-1 text-muted">Price not available</p>
+              <% } %>
+              <p class="card-text small text-secondary"><%= listing.description %></p>
+            </div>
           </div>
-        </div>
-      </a>
-    </div>
+        </a>
+      </div>
     <% } %>
   </div>
 </div>
 
 <script>
   let taxSwitch = document.getElementById("switchCheckDefault");
-
   taxSwitch.addEventListener("change", () => {
     let taxInfo = document.getElementsByClassName("tax-info");
-
     for (let info of taxInfo) {
       info.style.display = taxSwitch.checked ? "inline" : "none";
+    }
+  });
+
+  // Example handler for the extra toggle
+  let extraSwitch = document.getElementById("switchCheckExtra");
+  extraSwitch.addEventListener("change", () => {
+    if (extraSwitch.checked) {
+      console.log("Extra option enabled");
+    } else {
+      console.log("Extra option disabled");
     }
   });
 </script>

@@ -1,5 +1,5 @@
-if(process.env.NODE_ENV != "production"){
-  require('dotenv').config()
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
 }
 
 const express = require("express");
@@ -25,20 +25,13 @@ const housesRouter = require("./routes/house.js");
 const flatsRouter = require("./routes/flats.js");
 
 const port = 8080;
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const MONGO_URL = process.env.ATLASDB_URL;
 
-// MongoDB connection
-mongoose.connect(MONGO_URL)
+// MongoDB connection (simplified)
+mongoose
+  .connect(MONGO_URL)
   .then(() => console.log("✅ Connected to MongoDB"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
-// Add this before routes
-app.use((req, res, next) => {
-  res.setTimeout(120000, () => { // 2 minutes
-    console.log('Request timed out');
-    res.status(408).send('Request timeout');
-  });
-  next();
-});
 
 // Session configuration
 const sessionOptions = {
@@ -48,8 +41,8 @@ const sessionOptions = {
   cookie: {
     httpOnly: true,
     expires: Date.now() + 1000 * 60 * 60 * 24 * 3, // 3 days
-    maxAge: 1000 * 60 * 60 * 24 * 3
-  }
+    maxAge: 1000 * 60 * 60 * 24 * 3,
+  },
 };
 
 // Middleware setup
@@ -80,7 +73,7 @@ app.use((req, res, next) => {
 
 // Mounting routers
 app.use("/listings", listingRouter);
-app.use("/listings/:id/reviews", reviewRouter); // Nested route
+app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 app.use("/rooms", roomsRouter);
 app.use("/", housesRouter);
@@ -90,12 +83,6 @@ app.use("/flats", flatsRouter);
 app.get("/home", (req, res) => {
   res.render("listings/home");
 });
-
-// // 404 handler
-// app.all((req, res, next) => {
-//   next(new ExpressError(404, "Page Not Found"));
-// });
-
 
 // Global error handler
 app.use((err, req, res, next) => {
