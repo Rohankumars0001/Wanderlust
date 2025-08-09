@@ -1,6 +1,22 @@
 <style>
-  .btn-search{
-    color: #e04848;
+  .search-btn{
+    align-items: center;
+    background-color: #e04848;
+    color: white;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+  }
+  .search-btn:hover{
+    background-color: #e04848;
+  }
+  .search-btn i{
+    display: inline;
+    margin-right: 0.5rem;
+  }
+
+  .search-inp{
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
   }
 </style>
 
@@ -33,8 +49,8 @@
       </div>
       <div class="navbar-nav ms-auto Search">
         <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-            <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input class="form-control me-2 search-inp" type="search" placeholder="Search Destinations"/>
+            <button class="btn search-btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
         </form>
       </div>
       <div class="navbar-nav ms-auto nav-links">
