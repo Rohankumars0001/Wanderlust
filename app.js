@@ -11,6 +11,7 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const cors = require("cors");
 const session = require("express-session");
+const MongoStore = require('connect-mongo');
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
@@ -33,9 +34,23 @@ mongoose
   .then(() => console.log("✅ Connected to MongoDB"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
+
+
+const store = MongoStore.create({
+mongoUrl:MONGO_URL,
+crypto:{
+  secret: process.env.SECRET,
+},
+touchAfter: 24 * 3600,
+});
+
+store.on("error",()=>{
+  console.log("Error in MONGO SESSION STORE",err);
+});
 // Session configuration
 const sessionOptions = {
-  secret: "mysupersecret",
+  store,
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -44,6 +59,7 @@ const sessionOptions = {
     maxAge: 1000 * 60 * 60 * 24 * 3,
   },
 };
+
 
 // Middleware setup
 app.set("view engine", "ejs");
