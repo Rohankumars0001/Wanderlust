@@ -1,3 +1,11 @@
+<style>
+  .btn-search{
+    color: #e04848;
+  }
+</style>
+
+
+
 <nav class="navbar navbar-expand-md sticky-top custom-navbar shadow-sm">
   <div class="container-fluid">
     <a class="navbar-brand brand-icon" href="/home">
@@ -22,6 +30,12 @@
             </span>
         </a>
         
+      </div>
+      <div class="navbar-nav ms-auto Search">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+            <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
       </div>
       <div class="navbar-nav ms-auto nav-links">
         <a class="nav-link" href="/listings/new">
