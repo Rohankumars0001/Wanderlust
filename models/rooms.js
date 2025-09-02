@@ -1,42 +1,34 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-// const Review = require("./review.js");
+const Review = require("./review.js"); // <-- important
 
 const roomSchema = new Schema({
   title: {
     type: String,
     required: false,
   },
-  description: {
-    type: String,
-  },
+  description: String,
   image: {
     filename: {
       type: String,
       default: "roomimage",
     },
     url: {
-  type: String,
-  default:
-    "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?q=80&w=1015&auto=format&fit=crop",
-  set: function (v) {
-    return v && v.trim() !== ""
-      ? v
-      : "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?q=80&w=1015&auto=format&fit=crop";
-  },
-},
-
+      type: String,
+      default: "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?q=80&w=1015&auto=format&fit=crop",
+      set: function (v) {
+        return v && v.trim() !== ""
+          ? v
+          : "https://images.unsplash.com/photo-1586348943529-beaae6c28db9?q=80&w=1015&auto=format&fit=crop";
+      },
+    },
   },
   price: {
     type: Number,
     default: 0,
   },
-  location: {
-    type: String,
-  },
-  country: {
-    type: String,
-  },
+  location: String,
+  country: String,
   reviews: [
     {
       type: Schema.Types.ObjectId,

@@ -3,7 +3,6 @@ const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
 const { isLoggedIn, isOwner, validateListing, isValidId } = require("../middleware.js");
 
-
 const roomsController = require("../controllers/rooms.js");
 const Room = require("../models/rooms.js"); // ✅ Needed for findById
 
@@ -11,11 +10,13 @@ const Room = require("../models/rooms.js"); // ✅ Needed for findById
 // So, define routes relative to that
 
 // INDEX - GET /rooms
+router.get("/", wrapAsync(roomsController.showRooms));
 
 // SHOW - GET /rooms/:id
+router.get("/:id", isValidId, wrapAsync(roomsController.showRoom));
 
 // NEW - GET /rooms/new
-// router.get("/new", isLoggedIn, roomsController.renderNew);
+router.get("/new", isLoggedIn, roomsController.renderNew);
 
 // CREATE - POST /rooms
 // router.post("/", isLoggedIn, validateListing, wrapAsync(roomsController.createRoom));
@@ -26,13 +27,6 @@ const Room = require("../models/rooms.js"); // ✅ Needed for findById
 // UPDATE - PUT /rooms/:id
 // router.put("/:id", isLoggedIn, isOwner, isValidId, validateListing, wrapAsync(roomsController.updateRoom));
 
-// DELETE - DELETE /rooms/:id
-// router.delete("/:id", isOwner, isLoggedIn, isValidId, wrapAsync(roomsController.deleteRoom));
-
-// GET /Rooms - Show all rooms
-router.get("/rooms",roomsController.showRooms);
-
-router.get("/room/:id",roomsController.showRoom);
 
 
 module.exports = router;

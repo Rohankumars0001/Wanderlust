@@ -1,0 +1,73 @@
+document.addEventListener("DOMContentLoaded", function () {
+  if (!mapToken || !listing?.geometry?.coordinates) {
+    console.error("Map token or coordinates missing.");
+    return;
+  }
+
+  const coords = listing.geometry.coordinates; // [lng, lat]
+
+  const map = new maplibregl.Map({
+    container: "map",
+    style: `https://api.maptiler.com/maps/streets-v2/style.json?key=${mapToken}`,
+    center: coords,
+    zoom: 9
+  });
+
+  map.addControl(new maplibregl.NavigationControl(), "top-right");
+
+  map.on("load", () => {
+    map.addSource("marker-circle", {
+      type: "geojson",
+      data: {
+        type: "Feature",
+        geometry: {
+          type: "Point",
+          coordinates: coords
+        }
+      }
+    });
+
+    map.addLayer({
+      id: "marker-circle-layer",
+      type: "circle",
+      source: "marker-circle",
+      paint: {
+        "circle-radius": {
+          stops: [
+            [0, 0],
+            [20, 300]
+          ]
+        },
+        "circle-color": "#e04848",
+        "circle-opacity": 0.25
+      }
+    });
+
+    const marker = new maplibregl.Marker({ color: "red" })
+      .setLngLat(coords)
+      .addTo(map);
+    const popup = new maplibregl.Popup({ closeButton: false })
+    .setHTML(`
+    <strong>${listing.title}</strong><br>
+    Precise location will be given after booking
+    `);
+
+
+    marker.getElement().addEventListener("mouseenter", () => {
+      popup.setLngLat(coords).addTo(map);
+    });
+
+    marker.getElement().addEventListener("mouseleave", () => {
+      popup.remove();
+    });
+
+    const style = document.createElement("style");
+    style.innerHTML = `
+      .maplibregl-popup,
+      .maplibregl-popup-content {
+        border-radius: 8px !important;
+      }
+    `;
+    document.head.appendChild(style);
+  });
+});

@@ -1,106 +1,272 @@
 <% layout("layouts/boilerplate") %>
 
-<div class="hero-wrapper">
-  <img src="/images/homeinti.jpg" alt="Hero Image" class="hero-background" />
-  <div class="form-box">
-    <h1>Find places to stay</h1>
-    <p>Discover homes and rooms for your next trip.</p>
-    <form>
-      <input type="text" placeholder="Location" />
-      <div class="date-group">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css" />
+
+<style>
+  [data-scroll-container] {
+    overflow: hidden;
+  }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .hero-container {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+  }
+
+  .hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .hero-form-box {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 300px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  }
+
+  .hero-form-box input,
+  .hero-form-box select,
+  .hero-form-box button {
+    width: 100%;
+    padding: 0.7rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+  }
+
+  .hero-form-box button {
+    background-color: #ff5a5f;
+    color: white;
+    font-weight: bold;
+    border: none;
+  }
+
+  .hero-form-box button:hover {
+    background-color: #e14d4f;
+  }
+
+  .hero-text {
+    color: black;
+    font-size: 2.5rem;
+    font-weight: 700;
+    max-width: 500px;
+    text-align: right;
+  }
+
+  .features-section {
+    background: #f9f9f9;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  .feature-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .feature-box i {
+    font-size: 2rem;
+    color: #2f2f2f;
+    margin-bottom: 1rem;
+  }
+
+  .feature-box h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .feature-box p {
+    font-size: 0.95rem;
+    color: #666;
+  }
+
+  .category-section {
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+
+  .category-section h1 {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: auto;
+  }
+
+  .category-card {
+    background: #fff;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07);
+    transition: transform 0.3s;
+  }
+
+  .category-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .category-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .category-card h4 {
+    margin: 1rem 0 0.5rem;
+  }
+
+  .category-card a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+  }
+
+  .category-card p {
+    padding: 0 1rem 1.5rem;
+    font-size: 0.95rem;
+    color: #555;
+  }
+</style>
+
+<div data-scroll-container>
+  <!-- Hero Section -->
+  <section class="hero-container" data-scroll-section>
+    <img src="/images/homeinti.jpg" alt="Hero Background" class="hero-image" data-scroll data-scroll-speed="-2" />
+
+    <div class="hero-form-box" data-scroll data-scroll-speed="2">
+      <form>
+        <input type="text" placeholder="Location" />
         <input type="date" />
         <input type="date" />
+        <select><option>Adults</option></select>
+        <select><option>Children</option></select>
+        <button type="submit">Search</button>
+      </form>
+    </div>
+
+    <div class="hero-text" data-scroll data-scroll-speed="1">
+      “Your next stay, just one search away.”
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features-section" data-scroll-section>
+    <div class="features-grid">
+      <div class="feature-box">
+        <i class="fa-solid fa-shield-halved"></i>
+        <h4>Enjoy some flexibility</h4>
+        <p>Flexible cancellation makes it easy to rebook when plans change.</p>
       </div>
-      <div class="guest-group">
-        <select>
-          <option>Adults</option>
-        </select>
-        <select>
-          <option>Children</option>
-        </select>
+      <div class="feature-box">
+        <i class="fa-solid fa-house"></i>
+        <h4>7M+ Active Listings</h4>
+        <p>Trusted by 1B+ guests in 220+ countries and destinations.</p>
       </div>
-      <button type="submit">Search</button>
-    </form>
-  </div>
-</div>
-<br /><br /><br />
-<div class="info">
-  <div>
-    <i class="fa-solid fa-shield-halved"></i><br /><br />
-    <h4>Enjoy some flexibility</h4>
-    <p>
-      Stays with flexible cancellation make it easy to rebook if your plans
-      change.
-    </p>
-  </div>
-  <div>
-    <i class="fa-solid fa-house"></i><br /><br />
-    <h4>More than 7M active listings</h4>
-    <p>
-      Join more than 1 billion guests who’ve found getaways in over 220
-      countries and destinations.
-    </p>
-  </div>
-  <div>
-    <i class="fa-solid fa-filter"></i> <br /><br />
-    <h4>100+ filters for tailored stays</h4>
-    <p>
-      Pick your price range, the number of rooms you want and other key
-      amenities to find the stay that fits your needs.
-    </p>
-  </div>
-</div>
-<br /><br /><br /><br /><br />
-<div class="category">
-  <h1>Big, small, we have it all</h1>
-  <br />
-  <div class="category-buttons">
-    <div class="category-card">
-      <img src="/images/house.jpg" alt="Houses" class="category-image" />
-      <h4 class="category-title">
-        <a href="/houses" class="category-link">Houses &rsaquo;</a>
-      </h4>
-      <p class="category-description">
-        Private homes perfect for families or larger groups.
-      </p>
+      <div class="feature-box">
+        <i class="fa-solid fa-filter"></i>
+        <h4>100+ Smart Filters</h4>
+        <p>Find the perfect place by price, size, and key amenities.</p>
+      </div>
     </div>
-    <div class="category-card">
-      <img src="/images/flat.jpg" alt="Flats" class="category-image" />
-      <h4 class="category-title">
-        <a href="/flats" class="category-link">Flats &rsaquo;</a>
-      </h4>
-      <p class="category-description">
-        Stay in convenient locations with shared buildings.
-      </p>
+  </section>
+
+  <!-- Categories -->
+  <section class="category-section" data-scroll-section>
+    <h1>Big, small, we have it all</h1>
+    <div class="category-grid">
+      <div class="category-card">
+        <img src="/images/house.jpg" class="category-img" alt="Houses" />
+        <h4><a href="/houses">Houses &rsaquo;</a></h4>
+        <p>Private homes perfect for families or larger groups.</p>
+      </div>
+      <div class="category-card">
+        <img src="/images/flat.jpg" class="category-img" alt="Flats" />
+        <h4><a href="/flats">Flats &rsaquo;</a></h4>
+        <p>Stay in convenient locations with shared buildings.</p>
+      </div>
+      <div class="category-card">
+        <img src="/images/room.jpg" class="category-img" alt="Rooms" />
+        <h4><a href="/Rooms">Rooms &rsaquo;</a></h4>
+        <p>Enjoy private space and shared common areas affordably.</p>
+      </div>
     </div>
-    <div class="category-card">
-      <img src="/images/room.jpg" alt="Rooms" class="category-image" />
-      <h4 class="category-title">
-        <a href="/Rooms" class="category-link">Rooms &rsaquo;</a>
-      </h4>
-      <p class="category-description">
-        Enjoy your own sleeping space and a common area with others.
-      </p>
+  </section>
+
+  <!-- Enhanced Stylish Features Section -->
+<section class="features-section-glass" data-scroll-section>
+  <div class="features-title-wrapper">
+    <h2 class="features-glass-heading">Why Guests Love Staying With Us</h2>
+  </div>
+  <div class="features-glass-grid">
+    <div class="glass-card">
+      <i class="fa-solid fa-rocket"></i>
+      <h4>Fast Check-ins</h4>
+      <p>Instant confirmation and hassle-free entry to get started right away.</p>
+    </div>
+    <div class="glass-card">
+      <i class="fa-solid fa-heart"></i>
+      <h4>Guest-Focused Comfort</h4>
+      <p>Every stay is designed for warmth, ease, and personal comfort.</p>
+    </div>
+    <div class="glass-card">
+      <i class="fa-solid fa-map-marked-alt"></i>
+      <h4>Prime Locations</h4>
+      <p>Stay close to key attractions, transit, and buzzing local culture.</p>
+    </div>
+    <div class="glass-card">
+      <i class="fa-solid fa-wifi"></i>
+      <h4>High-Speed Wi-Fi</h4>
+      <p>Always connected — whether you're working remotely or streaming movies.</p>
+    </div>
+    <div class="glass-card">
+      <i class="fa-solid fa-leaf"></i>
+      <h4>Eco-Friendly Choices</h4>
+      <p>Choose listings with sustainable practices for a better tomorrow.</p>
+    </div>
+    <div class="glass-card">
+      <i class="fa-solid fa-star"></i>
+      <h4>Top-Rated Hosts</h4>
+      <p>Highly reviewed hosts who go the extra mile to make your stay perfect.</p>
     </div>
   </div>
+</section>
+
 </div>
 
-<!-- <div class="category-buttons">
-  <button class="category-card">
-    <img src="/images/house.jpg" alt="Houses" class="cat" />
-    <h4 href="#">Houses &rsaquo;</h4>
-    <p>If you need extra space, get an entire place all to yourself.</p>
-  </button>
-
-  <button class="category-card">
-    <img src="/images/flat.jpg" alt="Flats" class="cat" />
-    <h4>Flats &rsaquo;</h4>
-    <p>Stay in convenient locations with shared buildings.</p>
-  </button>
-
-  <button class="category-card">
-    <img src="/images/room.jpg" alt="Rooms" class="cat" />
-    <h4>Rooms &rsaquo;</h4>
-    <p>Enjoy your own sleeping space and a common area with others.</p>
-  </button>
-</div> -->
+<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+<script>
+  const scroll = new LocomotiveScroll({
+    el: document.querySelector("[data-scroll-container]"),
+    smooth: true,
+    lerp: 0.05,
+  });
+</script>

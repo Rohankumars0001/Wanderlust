@@ -1,0 +1,30 @@
+<% layout("layouts/boilerplate") %>
+<h3 class="text-center my-4">Rooms</h3>
+
+<div class="container mb-5">
+  <div class="row justify-content-center g-4">
+    <% for(let room of rooms){ %>
+      <div class="col-lg-4 col-md-6 col-sm-10 lazy-card">
+        <a href="/rooms/<%= room._id %>" class="listing-link" style="text-decoration: none;">
+          <div class="card listing-card-3d listing-c shadow-sm border-0">
+            <img
+              data-src="<%= room.image.url.replace('/upload/', '/upload/w_800,q_auto,f_auto/') %>"
+              class="card-img-top lazy-img"
+              alt="room_image"
+              style="height: 14rem; object-fit: cover;"
+            />
+            <div class="card-body">
+              <h5 class="card-title mb-1"><%= room.title %></h5>
+              <% if (room.price != null) { %>
+                <p class="mb-1 text-muted">&#8377; <%= room.price.toLocaleString("en-IN") %>/night</p>
+              <% } else { %>
+                <p class="mb-1 text-muted">Price not available</p>
+              <% } %>
+              <p class="card-text small text-secondary"><%= room.description %></p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% } %>
+  </div>
+</div>
