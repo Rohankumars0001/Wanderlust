@@ -1,7 +1,6 @@
 html {
   scroll-behavior: smooth;
-    height: 100%;
-
+  height: 100%;
 }
 /* html, body {
   height: 100%;
@@ -21,11 +20,9 @@ main {
   flex: 1;
 }
 
-
 [data-scroll-container] {
   overflow: hidden;
 }
-
 
 /* nav */
 .navbar {
@@ -49,41 +46,6 @@ main {
   margin-right: 1rem;
 }
 
-/* footer 
-.f-info-links a {
-  text-decoration: none;
-  color: #222222;
-}
-
-.f-info-links a:hover {
-  text-decoration: underline;
-}
-
-.f-info-links,
-.f-info-socials,
-.f-info-brand {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.f-info-socials i {
-  font-size: 1.2rem;
-  color: #222222;
-  margin-right: 1rem;
-}
-
-.f-info {
-  text-align: center;
-  height: 8rem;
-  background-color: #ebebeb;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: space-evenly;
-}
-*/
 .footer {
   background-color: #f8f8f8;
   border-top: 1px solid #ddd;
@@ -101,7 +63,6 @@ main {
 .legal {
   margin-left: 3rem;
 }
-
 
 .legal a {
   color: black;
@@ -157,7 +118,9 @@ main {
 }
 
 .listing-card-3d {
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
   border-radius: 1rem;
   overflow: hidden;
 }
@@ -203,7 +166,6 @@ main {
 .category-card:hover {
   transform: translateY(-6px);
 }
-
 
 .features-section-glass {
   position: relative;
@@ -268,7 +230,6 @@ main {
   line-height: 1.4;
 }
 
-
 .navbar {
   background: #ffffff; /* solid color */
   backdrop-filter: none;
@@ -324,13 +285,36 @@ i {
   font-size: 0.95rem;
 }
 
- .stars .star {
-    color: #e04848;
-    font-size: 1.2rem;
-    text-shadow: 0 0 2px #000; /* adds contrast */
-  }
+.stars .star {
+  color: #e04848;
+  font-size: 1.2rem;
+  text-shadow: 0 0 2px #000; /* adds contrast */
+}
 
-
-  .material-symbols-outlined {
+.material-symbols-outlined {
   color: #e04848; /* your desired color */
+}
+
+.flash-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000;
+  animation: flashAnim 0.5s ease-in-out 3;
+}
+
+@keyframes flashAnim {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
