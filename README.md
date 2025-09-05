@@ -18,6 +18,11 @@
 ---
 
 ## 🛠 Tech Stack
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=git,kubernetes,docker,c,vim" />
+  </a>
+</p>
 
 - **Frontend:** HTML5, CSS3, EJS, Font Awesome
 - **Backend:** Node.js, Express.js
