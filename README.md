@@ -20,7 +20,7 @@
 ## 🛠 Tech Stack
 <p align="center">
   <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=html,css,node.js,express.js,MongoDB" />
+    <img src="https://skillicons.dev/icons?i=html,css,nodejs,express,mongodb" />
   </a>
 </p>
 
